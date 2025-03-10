@@ -1,4 +1,3 @@
-import React from 'react'
 import SecondHero from '../../components/secondHero/SecondHero'
 import TrendingListings from '../../components/Trending-Listings/TrendingListings'
 
