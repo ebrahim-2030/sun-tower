@@ -32,7 +32,7 @@ const NextArrow: React.FC<ArrowProps> = ({ onClick }) => {
 const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => {
   return (
     <div
-      className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white/30 backdrop-blur-lg py-3 px-3 lg:px-6 py-3 p-2 rounded-full shadow-md z-10 cursor-pointer"
+      className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white/30 backdrop-blur-lg px-3 lg:px-6 py-3 p-2 rounded-full shadow-md z-10 cursor-pointer"
       onClick={onClick}
     >
       <MdOutlineKeyboardArrowLeft className="text-white" />
