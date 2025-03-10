@@ -1,5 +1,4 @@
 import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
-import Renting from "../renting/Renting";
 
 const Footer = () => {
   interface FooterSection {

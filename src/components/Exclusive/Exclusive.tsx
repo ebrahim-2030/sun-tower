@@ -7,7 +7,7 @@ import {
 import { TfiWallet } from "react-icons/tfi";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { PiBathtubLight } from "react-icons/pi";
-import Slider, { Settings } from "react-slick";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -20,7 +20,7 @@ interface ArrowProps {
 const NextArrow: React.FC<ArrowProps> = ({ onClick }) => {
   return (
     <div
-      className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white/30 backdrop-blur-lg px-3  lg:px-6 py-3 p-2 rounded-full shadow-md cursor-pointer"
+      className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white/30 backdrop-blur-lg px-3 lg:px-6 py-3 p-2 rounded-full shadow-md cursor-pointer"
       onClick={onClick}
     >
       <MdOutlineKeyboardArrowRight className="text-white" />
@@ -75,8 +75,8 @@ const properties = [
 ];
 
 const Exclusive: React.FC = () => {
-  // Slider settings
-  const settings: Settings = {
+  // Slider settings (type assertion)
+  const settings = {
     infinite: true,
     speed: 1000,
     slidesToShow: 1,
@@ -85,9 +85,10 @@ const Exclusive: React.FC = () => {
     autoplaySpeed: 10000,
     nextArrow: <NextArrow onClick={() => {}} />,
     prevArrow: <PrevArrow onClick={() => {}} />,
-  };
-  // slider setting two
-  const setting2: Settings = {
+  } as any; // Type assertion to 'any'
+
+  // Slider settings for multiple images
+  const setting2 = {
     infinite: true,
     speed: 1000,
     slidesToShow: 1,
@@ -96,7 +97,8 @@ const Exclusive: React.FC = () => {
     autoplaySpeed: 3000,
     nextArrow: <NextArrow onClick={() => {}} />,
     prevArrow: <PrevArrow onClick={() => {}} />,
-  };
+  } as any; // Type assertion to 'any'
+
   return (
     <>
       <div className="text-center space-y-5 p-5">
@@ -111,22 +113,22 @@ const Exclusive: React.FC = () => {
       </div>
 
       {/* images */}
-      <div className="grid grid-cols-1 p-6 gap-2  md:grid-cols-4 md:gap-2 md:gap-x-3 md:gap-y-0 md:p-10">
+      <div className="grid grid-cols-1 p-6 gap-2 md:grid-cols-4 md:gap-2 md:gap-x-3 md:gap-y-0 md:p-10">
         {/* image one */}
         <div className="rounded-xl w-full relative overflow-hidden md:col-span-2 md:row-span-2">
           <Slider {...settings}>
             {properties.map((property) => (
               <div
                 key={property.id}
-                className="rounded-xl h-[400px] md:h-[400px] lg:h-[610px] relative  "
+                className="rounded-xl h-[400px] md:h-[400px] lg:h-[610px] relative"
               >
                 <img
                   src={property.image}
-                  className=" h-full w-full rounded-2xl object-cover"
+                  className="h-full w-full rounded-2xl object-cover"
                   alt=""
                 />
                 <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/90 to-transparent rounded-b-xl"></div>
-                {/* test and icons for every image */}
+                {/* text and icons for every image */}
                 <div className="absolute bottom-6 md:bottom-10 text-white space-y-2 left-10">
                   <div className="flex flex-col gap-0 space-y-3">
                     <h1 className="text-white text-md md:text-lg lg:text-2xl font-semibold">
@@ -169,10 +171,10 @@ const Exclusive: React.FC = () => {
         <div className="w-full md:col-span-2 row-span-1 rounded-xl overflow-hidden relative">
           <Slider {...setting2}>
             {properties.map((property) => (
-              // loop for deatils of every image
+              // loop for details of every image
               <div
                 key={property.id}
-                className="rounded-xl  overflow-hidden relative"
+                className="rounded-xl overflow-hidden relative"
               >
                 <img
                   className="w-full h-80 md:h-52 lg:w-[600px] rounded-xl lg:h-[320px] xl:w-[800px]"
@@ -190,7 +192,7 @@ const Exclusive: React.FC = () => {
           />
         </div>
 
-        {/* card four */}
+        {/* Card four */}
         <div className="h-48 w-full md:h-44 p-3 bg-gray-800 rounded-xl text-white lg:p-10 lg:h-[283px] space-y-3">
           <p className="text-3xl md:text-xl lg:text-4xl font-medium">280+</p>
           <p className="md:text-xs lg:text-sm font-semibold text-gray-200">
